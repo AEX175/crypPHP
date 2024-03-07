@@ -12,25 +12,23 @@
 <?php
 
 require_once 'lib.php';
-
-//Creamos el objeto Cryp
+// Create a Cryp object
 $cryp = new CrypX();
-//Creamos un clave aleatoria puedes hacerla de la cantdad de bytes que quieras
+
+// Generate a random key (you can specify the number of bytes)
 $key = $cryp->randKey(16);
-//Creamos un IV aleatorio
+
+// Generate a random IV
 $iv = $cryp->randIv();
 
-//Encriptamos y desencriptamos y enviamos las variables $key y $iv tanto 
-//para encriptar como para desencriptar si ambas no coinciden no se podra desencriptar
-$encriptado = $cryp->encrypt("Library for encryption and decryption of strings or integers, based on PHP",$key,$iv);
-$desencriptado = $cryp->decrypt($encriptado,$key,$iv);
+// Encrypt and decrypt, sending the $key and $iv variables for both encryption and decryption.
+// If they don't match, decryption will fail.
+$encrypted = $cryp->encrypt("Library for encryption and decryption of strings or integers, based on PHP", $key, $iv);
+$decrypted = $cryp->decrypt($encrypted, $key, $iv);
 
-//Imprimimos los valores
-echo "Key: ".$key."<br>";
-echo "IV: ".$iv."<br>";
-
-var_dump($encriptado);
-echo "<br>";
-var_dump($desencriptado);
-
-//Nota: Puedes definir las claves de forma estatica si lo deseas
+// Print the values
+echo "Key: " . $key . "<br>";
+echo "IV: " . $iv . "<br>";
+echo "Encrypted: " . $encrypted . "<br>";
+echo "Decrypted: " . $decrypted . "<br>";
+//Note: You can define the keys statically if you wish
